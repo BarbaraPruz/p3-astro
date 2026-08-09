@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home | My Astro Site">
+  <section class="hero">
+    <h1>Welcome to My Astro Site</h1>
+    <p>
+      This is a small starter built with Astro. It comes with a reusable
+      header, a reusable footer, and this home page, so you have a solid
+      base to build more pages on.
+    </p>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h2>Fast by default</h2>
+      <p>Astro ships zero JavaScript unless you opt in, so pages load quickly.</p>
+    </div>
+    <div class="feature">
+      <h2>Component-based</h2>
+      <p>Header and footer live in <code>src/components</code> and can be reused on any page.</p>
+    </div>
+    <div class="feature">
+      <h2>Easy to extend</h2>
+      <p>Add new pages in <code>src/pages</code> and wrap them with the shared <code>Layout</code>.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero p {
+    max-width: 640px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature {
+    border: 1px solid #e5e5ef;
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .feature h2 {
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+
+  .feature p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+</style>
