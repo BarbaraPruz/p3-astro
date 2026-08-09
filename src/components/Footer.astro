@@ -4,7 +4,7 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>&copy; {year} P3 Studio Hawaii. All rights reserved.</p>
+    <span>&copy; {year} P3 Studio Hawaii. All rights reserved.</span>
     <ul class="footer-links">
       <li>
         <a
@@ -35,10 +35,12 @@ const year = new Date().getFullYear();
 
 <style>
   .site-footer {
-    background: #f4f4f8;
-    color: #444;
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: var(--color-text-muted);
     padding: 1.5rem;
     margin-top: 3rem;
+    border-top: 1px solid var(--color-accent-border);
   }
 
   .footer-inner {
@@ -67,5 +69,15 @@ const year = new Date().getFullYear();
 
   .footer-links a:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: var(--breakpoint-sm)) {
+    .footer-inner {
+      flex-direction: column; /* stack vertically */
+      align-items: center; /* center content */
+      text-align: center;
+      justify-content: center;
+      gap: 1rem;
+    }
   }
 </style>
