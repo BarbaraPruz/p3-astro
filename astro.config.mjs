@@ -1,5 +1,11 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
-  // Add integrations, adapters, etc. here as the project grows
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Playfair Display",
+      cssVariable: "--font-playfair",
+    },
+  ],
 });
