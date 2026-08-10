@@ -6,7 +6,7 @@ interface Props {
   title?: string;
 }
 
-const { title = "My Astro Site" } = Astro.props;
+const { title = "P3 Studio Hawaii" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +15,12 @@ const { title = "My Astro Site" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+        <script is:inline>
+      // Runs before paint to avoid a flash of the wrong theme.
+      const stored = localStorage.getItem('theme');
+      const theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
   </head>
   <body>
     <Header />
@@ -34,16 +40,30 @@ const { title = "My Astro Site" } = Astro.props;
       Roboto,
       sans-serif;
 
+    --color-bg: #fff;
+    --color-text: #1e1e2e;
     --color-muted-text: #4d4d4d;
     --color-accent-border: #cca533;
 
     --breakpoint-sm: 640px;
     --breakpoint-md: 1024px;
+
+    color-scheme: light;
+  }
+
+  [data-theme="dark"] {
+    --color-bg: #0a0a0a;
+    --color-text: #f5f5f0;
+    --color-muted-text: #e6e6e6;
+    --color-accent-border: #c9a227; /* gold */
+        color-scheme: dark;
   }
 
   body {
     margin: 0;
-    color: #1e1e2e;
+        color: var(--color-text);
+    background: var(--color-bg);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .page-content {
