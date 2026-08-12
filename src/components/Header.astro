@@ -1,15 +1,15 @@
 ---
 const navLinks = [
-  { href: "/", label: "Home" },
+  /*   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Contact" }, */
 ];
 ---
 
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="logo">P3 Studio Hawaii</a>
-    <nav class="site-nav">
+    <!--     <nav class="site-nav">
       <ul>
         {
           navLinks.map((link) => (
@@ -19,7 +19,7 @@ const navLinks = [
           ))
         }
       </ul>
-    </nav>
+    </nav> -->
     <button
       id="theme-toggle"
       class="theme-toggle"
@@ -46,7 +46,10 @@ const navLinks = [
     const theme =
       document.documentElement.getAttribute("data-theme") || "light";
     document.querySelectorAll(".themed-icon").forEach((img) => {
-      img.src = `/icons/${theme}/${img.dataset.filename}`;
+      img.src = `/${theme}/icons/${img.dataset.filename}`;
+    });
+    document.querySelectorAll(".themed-image").forEach((img) => {
+      img.src = `/${theme}/${img.dataset.filename}`;
     });
   }
 
@@ -83,7 +86,7 @@ const navLinks = [
     font-size: 1.25rem;
     color: var(--color-header-text);
     text-decoration: none;
-    font-family: var(--font-playfair)
+    font-family: var(--font-playfair);
   }
 
   .header-right {
