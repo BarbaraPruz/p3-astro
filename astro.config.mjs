@@ -7,5 +7,10 @@ export default defineConfig({
       name: "Playfair Display",
       cssVariable: "--font-playfair",
     },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Montserrat",
+      cssVariable: "--font-montserrat",
+    },
   ],
 });

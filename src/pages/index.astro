@@ -10,34 +10,30 @@ import Layout from "../layouts/Layout.astro";
       src="/light/p3-logo.png"
       alt="P3 Studio Hawaii Logo"
     />
-    <p>
-      This is a small starter built with Astro. It comes with a reusable header,
-      a reusable footer, and this home page, so you have a solid base to build
-      more pages on.
-    </p>
   </section>
 
   <section class="features">
-    <div class="feature">
-      <h2>Fast by default</h2>
-      <p>
-        Astro ships zero JavaScript unless you opt in, so pages load quickly.
-      </p>
+    <div
+      class="rotating-words features-title"
+      aria-label="Align Recover Thrive"
+    >
+      <span>Align</span>
+      <span>Recover</span>
+      <span>Thrive</span>
     </div>
-    <div class="feature">
-      <h2>Component-based</h2>
-      <p>
-        Header and footer live in <code>src/components</code> and can be reused on
-        any page.
-      </p>
-    </div>
-    <div class="feature">
-      <h2>Easy to extend</h2>
-      <p>
-        Add new pages in <code>src/pages</code> and wrap them with the shared <code
-          >Layout</code
-        >.
-      </p>
+    <div class="features-grid">
+      <div class="feature">
+        <h2>Personalized Sessions</h2>
+        <p>Egoscue Postural Analysis & Custom Correction Programs</p>
+      </div>
+      <div class="feature">
+        <h2>Recovery and Wellness</h2>
+        <p>Steam Sauna - Red Light Therapy -PEMF Theraypy - BioCharger.</p>
+      </div>
+      <div class="feature">
+        <h2>Movement<br />Classes</h2>
+        <p>Posture-Focused Classes for Strength, Mobility and Vitality</p>
+      </div>
     </div>
   </section>
 </Layout>
@@ -45,46 +41,109 @@ import Layout from "../layouts/Layout.astro";
 <style>
   .hero {
     text-align: center;
+    margin-top: -2.5rem;
   }
 
   .hero h1 {
     font-size: 2.25rem;
     margin-bottom: 0;
   }
-
-  .hero p {
-    max-width: 640px;
-    margin: 0 auto;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-  }
-
   .hero img {
-    width: 60%;
+    width: 70%;
     height: auto;
     display: block;
     margin: auto;
   }
   .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    margin-top: 4rem;
+    text-align: center;
   }
 
+  .features-title {
+    font-size: 7rem;
+    font-family: var(--font-playfair);
+    color: var(--color-text);
+    margin: 1.5rem auto;
+  }
+
+  .features-grid {
+    margin-top: 1rem;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));*/
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
   .feature {
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
     padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .feature h2 {
-    font-size: 1.1rem;
-    margin-top: 0;
+    font-size: 2rem;
+    font-family: var(--font-montserrat);
+    color: var(--color-text);
+    margin-bottom: 0;
   }
-
   .feature p {
     color: var(--color-text-muted);
-    line-height: 1.5;
+    font-size: 1.25rem;
     margin-bottom: 0;
+  }
+
+  .rotating-words {
+    position: relative;
+    height: 1.2em;
+    text-align: center;
+  }
+
+  .rotating-words span {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: word-fade 12s ease-in-out infinite;
+  }
+  .rotating-words span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .rotating-words span:nth-child(2) {
+    animation-delay: 4s;
+  }
+
+  .rotating-words span:nth-child(3) {
+    animation-delay: 8s;
+  }
+
+@keyframes word-fade {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotating-words span {
+      animation: none;
+    }
+
+    .rotating-words span:not(:first-child) {
+      display: none;
+    }
   }
 </style>
