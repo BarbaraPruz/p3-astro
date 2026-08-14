@@ -21,7 +21,7 @@ import Features from "../components/home/Features.astro";
 <style>
   .hero {
     text-align: center;
-    margin-top: -2.5rem;
+    margin-top: -1.5rem;
   }
 
   .hero h1 {
@@ -37,5 +37,13 @@ import Features from "../components/home/Features.astro";
   .features-section {
     margin-top: 4rem;
     text-align: center;
+  }
+
+    @media (max-width: 680px) {
+    .hero img {
+      width: 80%;
+    }
+      .features-section {
+    margin-top: 2.5rem;}
   }
 </style>
