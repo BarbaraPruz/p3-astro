@@ -4,53 +4,49 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <span>&copy; {year} P3 Studio Hawaii. All rights reserved.</span>
-    <ul class="footer-links">
-      <li>
-        <a
-          href="https://instagram.com/p3studiohawaii"
-          aria-label="Instagram"
-          target="_blank"
-        >
-          <img
-            class="themed-icon"
-            data-filename="instagram.svg"
-            src="/light/icons/instagram.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </a>
-      </li>
-      <li>
-        <a
-          href="mailto:p3studiohawaii@gmail.com"
-          aria-label="Email"
-          target="_blank"
-        >
-          <img
-            class="themed-icon"
-            data-filename="email.svg"
-            src="/light/icons/email.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </a>
-      </li>
-      <li>
-        <a href="tel:+1-808-258-2579" aria-label="Phone" target="_blank">
-          <img
-            class="themed-icon"
-            data-filename="telephone.svg"
-            src="/light/icons/telephone.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </a>
-      </li>
-    </ul>
+    <div>3608 Diamond Head Circle<br/>Honolulu, Hawaii 96815<br/>
+      <a href="tel:+1-808-258-2579" target="_blank" class="footer-text-link">
+        808-258-2579
+      </a>
+    </div>
+    <div class="copyright-desktop">&copy; {year} P3 Studio Hawaii. All rights reserved.</div>
+    <div>
+      <ul class="footer-links">
+        <li>
+          <a
+            href="https://instagram.com/p3studiohawaii"
+            aria-label="Instagram"
+            target="_blank"
+          >
+            <img
+              class="themed-icon"
+              data-filename="instagram.svg"
+              src="/light/icons/instagram.svg"
+              alt=""
+              width="20"
+              height="20"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:p3studiohawaii@gmail.com"
+            aria-label="Email"
+            target="_blank"
+          >
+            <img
+              class="themed-icon"
+              data-filename="email.svg"
+              src="/light/icons/email.svg"
+              alt=""
+              width="20"
+              height="20"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright-mobile">&copy; {year} P3 Studio Hawaii. All rights reserved.</div>
   </div>
 </footer>
 
@@ -67,12 +63,18 @@ const year = new Date().getFullYear();
   .footer-inner {
     max-width: 960px;
     margin: 0 auto;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    font-size: 0.875rem;
+  }
+
+  .footer-text-link {
+    color: var(--color-text);
+    text-decoration-color: var(--color-text);
   }
 
   .footer-links {
@@ -84,7 +86,7 @@ const year = new Date().getFullYear();
   }
 
   .footer-links a {
-    color: #444;
+    color: var(--color-text);
     text-decoration: none;
   }
 
@@ -92,6 +94,9 @@ const year = new Date().getFullYear();
     text-decoration: underline;
   }
 
+  .copyright-mobile {
+    display: none;
+  }
   @media (max-width: 680px) {
     .footer-inner {
       flex-direction: column; /* stack vertically */
@@ -99,6 +104,14 @@ const year = new Date().getFullYear();
       text-align: center;
       justify-content: center;
       gap: 1rem;
+    }
+
+    .copyright-desktop {
+      display: none;
+    }
+
+    .copyright-mobile {
+      display: block;
     }
   }
 </style>
