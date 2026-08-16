@@ -16,13 +16,17 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-      <Font cssVariable="--font-playfair" />
-      <Font cssVariable="--font-montserrat" />
-        <script is:inline>
+    <Font cssVariable="--font-playfair" />
+    <Font cssVariable="--font-montserrat" />
+    <script is:inline>
       // Runs before paint to avoid a flash of the wrong theme.
-      const stored = localStorage.getItem('theme');
-      const theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
+      const stored = localStorage.getItem("theme");
+      const theme =
+        stored ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.setAttribute("data-theme", theme);
     </script>
   </head>
   <body>
@@ -47,6 +51,7 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     --color-text: #1e1e2e;
     --color-muted-text: #4d4d4d;
     --color-accent-border: #cca533;
+    --color-secondary-background: #4d4d4d;
 
     color-scheme: light;
   }
@@ -56,14 +61,17 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     --color-text: #f5f5f0;
     --color-muted-text: #e6e6e6;
     --color-accent-border: #c9a227; /* gold */
-        color-scheme: dark;
+    --color-secondary-background: #e6e6e6;
+    color-scheme: dark;
   }
 
   body {
     margin: 0;
-        color: var(--color-text);
+    color: var(--color-text);
     background: var(--color-bg);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 
   .page-content {
@@ -71,5 +79,36 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     margin: 0 auto;
     padding: 2.5rem 1.5rem;
     min-height: 60vh;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-family: var(--font-playfair);
+    color: var(--color-text);
+  }
+
+  .text-link {
+    color: var(--color-text);
+    text-decoration-color: var(--color-text);
+  }
+
+  .primary-button {
+    background: var(--color-secondary-background);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--color-bg);
+    font-size: 1rem;
+  }
+  .large-primary-button {
+    background: var(--color-secondary-background);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    color: var(--color-bg);
+    font-size: 1.5rem;
+  }
+  .large-primary-button:hover,
+  .primary-button:hover {
+    opacity: 0.9;
+    cursor: pointer;
   }
 </style>

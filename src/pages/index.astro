@@ -13,8 +13,11 @@ import Features from "../components/home/Features.astro";
     />
   </section>
 
-  <section class="features-section">
+  <section class="home-section">
     <Features />
+  </section>
+  <section class="home-section">
+    <a class="large-primary-button" href="/contact" >Contact Us</a>
   </section>
 </Layout>
 
@@ -34,16 +37,17 @@ import Features from "../components/home/Features.astro";
     display: block;
     margin: auto;
   }
-  .features-section {
+  .home-section {
     margin-top: 4rem;
     text-align: center;
   }
 
-    @media (max-width: 680px) {
+  @media (max-width: 680px) {
     .hero img {
       width: 80%;
     }
-      .features-section {
-    margin-top: 2.5rem;}
+    .home-section {
+      margin-top: 2.5rem;
+    }
   }
 </style>
