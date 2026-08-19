@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Form Submitted | P3 Studio Hawaii">
+  <div class="message-container">
+    <div>
+      <p class="mahalo">Mahalo for your interest in P3 Studio Hawaii.</p>
+      <p class="message">We will get back to you soon.</p>
+    </div>
+    <a class="large-primary-button" href="/">Back to Home</a>
+  </div>
+</Layout>
+
+<style>
+  .message-container {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .mahalo {
+    font-size: 2rem;
+    color: var(--color-text);
+  }
+  .message {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    text-align: center;
+  }
+</style>

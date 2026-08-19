@@ -17,7 +17,13 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </div>
   <section>
-    <form method="POST" class="form-container">
+    <form
+      method="POST"
+      class="form-container"
+      name="contact"
+      data-netlify="true"
+      action="/pages/success"
+    >
       <div class="contact-input-line">
         <label for="name">Name:</label>
         <input
@@ -53,8 +59,8 @@ import Layout from "../layouts/Layout.astro";
         />
       </div>
 
-      <div>
-        <label for="message">Your Message<br /></label>
+      <div style="margin-top: 1rem;">
+        <label for="message">Your Message:<br /></label>
         <textarea
           id="message"
           name="message"
@@ -90,6 +96,7 @@ import Layout from "../layouts/Layout.astro";
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
     gap: 1rem;
   }
 
@@ -100,6 +107,7 @@ import Layout from "../layouts/Layout.astro";
   }
   .contact-input-field {
     flex-grow: 1;
+    font-size: 1.25rem;
   }
   .contact-message-field {
     width: 100%;
@@ -108,5 +116,18 @@ import Layout from "../layouts/Layout.astro";
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+
+  @media (max-width: 680px) {
+    .contact-info {
+      width: 90%;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-container {
+      width: 90%;
+      font-size: 1.1rem;
+    }
   }
 </style>
