@@ -35,6 +35,50 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      function syncToggleIcon() {
+        const isDark =
+          document.documentElement.getAttribute("data-theme") === "dark";
+        const sun = document.querySelector(".icon-sun");
+        const moon = document.querySelector(".icon-moon");
+        if (sun) sun.style.display = isDark ? "none" : "inline";
+        if (moon) moon.style.display = isDark ? "inline" : "none";
+      }
+
+      function syncThemedImages() {
+        const theme =
+          document.documentElement.getAttribute("data-theme") || "light";
+        document.querySelectorAll(".themed-icon").forEach((img) => {
+          img.src = `/icons/${theme}/${img.dataset.filename}`;
+        });
+        document.querySelectorAll(".themed-image").forEach((img) => {
+          img.src = `/${theme}/${img.dataset.filename}`;
+        });
+      }
+
+      function syncTheme() {
+        syncToggleIcon();
+        syncThemedImages();
+      }
+
+      function initThemeToggle() {
+        const toggle = document.getElementById("theme-toggle");
+        if (!toggle) return;
+        toggle.addEventListener("click", () => {
+          const root = document.documentElement;
+          const next =
+            root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          syncTheme();
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        syncTheme();
+        initThemeToggle();
+      });
+    </script>
   </body>
 </html>
 
