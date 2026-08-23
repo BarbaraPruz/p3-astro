@@ -16,15 +16,17 @@ import Features from "../components/home/Features.astro";
   <section class="home-section">
     <Features />
   </section>
-  <section class="home-section">
-    <a class="large-primary-button" href="/contact" >Contact Us</a>
+  <section class="home-section news-section">
+    <h2>Upcoming Classes</h2>
+    <p>Details coming soon!</p>
+    <div><a class="large-primary-button" href="/contact">Contact Us</a></div>
   </section>
 </Layout>
 
 <style>
   .hero {
     text-align: center;
-    margin-top: -1.5rem;
+    /* margin-top: -1.5rem; */
   }
 
   .hero h1 {
@@ -41,13 +43,46 @@ import Features from "../components/home/Features.astro";
     margin-top: 4rem;
     text-align: center;
   }
+  .news-section {
+    padding: 3rem 0;
+    text-align: center;
+    background: var(--color-alternate-background);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
+  .news-section h2 {
+    font-size: 3rem;
+    font-family: var(--font-playfair);
+    color: var(--color-text);
+    margin: 0;
+  }
+  .news-section p {
+    font-size: 1.25rem;
+    font-family: var(--font-montserrat);
+    color: var(--color-text);
+    margin: 0;
+  }
   @media (max-width: 680px) {
     .hero img {
       width: 80%;
     }
     .home-section {
       margin-top: 2.5rem;
+    }
+
+    .news-section {
+      padding: 1.5rem 0;
+    }
+
+    .news-section h2 {
+      font-size: 2rem;
+    }
+
+    .news-section p {
+      font-size: 1rem;
     }
   }
 </style>

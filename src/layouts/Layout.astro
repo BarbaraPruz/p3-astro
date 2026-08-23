@@ -49,7 +49,7 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
         const theme =
           document.documentElement.getAttribute("data-theme") || "light";
         document.querySelectorAll(".themed-icon").forEach((img) => {
-          img.src = `/icons/${theme}/${img.dataset.filename}`;
+          img.src = `/${theme}/icons/${img.dataset.filename}`;
         });
         document.querySelectorAll(".themed-image").forEach((img) => {
           img.src = `/${theme}/${img.dataset.filename}`;
@@ -96,7 +96,7 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     --color-muted-text: #4d4d4d;
     --color-accent-border: #cca533;
     --color-secondary-background: #2b2308;
-
+    --color-alternate-background: #f8f9fa;
     color-scheme: light;
   }
 
@@ -106,6 +106,7 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     --color-muted-text: #e6e6e6;
     --color-accent-border: #d5992a; /* #c9a227 gold */
     --color-secondary-background: #e6e6e6;
+    --color-alternate-background: #1a1a1a; /*#000000;*/
     color-scheme: dark;
   }
 
@@ -143,9 +144,9 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     color: var(--color-bg);
     font-size: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
-    /* border: 1px solid var(--color-accent-border); */
   }
   .large-primary-button {
+    display: inline-block;
     text-decoration: none;
     background: var(--color-secondary-background);
     border-radius: 10px;
@@ -153,7 +154,6 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     color: var(--color-bg);
     font-size: 1.5rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
-    /*  border: 1px solid var(--color-accent-border); */
   }
   .large-primary-button:hover,
   .primary-button:hover {
@@ -165,6 +165,12 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     .page-content {
       padding: 1rem;
       min-height: 60vh;
+    }
+
+    .large-primary-button {
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
     }
   }
 </style>
