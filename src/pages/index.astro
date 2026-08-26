@@ -17,9 +17,25 @@ import Features from "../components/home/Features.astro";
     <Features />
   </section>
   <section class="home-section news-section">
-    <h2>Upcoming Classes</h2>
-    <p>Details coming soon!</p>
-    <div><a class="large-primary-button" href="/contact">Contact Us</a></div>
+    <h2>Class Schedule</h2>
+    <p>
+      Our small group classes (maximum 8 participants) are 60 minutes.<br />Cost
+      is $30 per class.&nbsp;<a href="/contact" class="text-link">Contact Us</a> to
+      reserve your space!
+    </p>
+    <div>
+      <div class="schedule-row">
+        <div>Morning Class</div><div>Monday-Friday</div><div>
+          8:00am - 9:00am
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div>Evening Class</div><div>Monday-Friday</div><div>
+          7:30pm - 8:30pm
+        </div>
+      </div>
+    </div>
+    <div><a class="primary-button" href="/contact">Contact Us</a></div>
   </section>
 </Layout>
 
@@ -44,7 +60,9 @@ import Features from "../components/home/Features.astro";
     text-align: center;
   }
   .news-section {
-    padding: 3rem 0;
+    max-width: 90%;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem 5rem;
     text-align: center;
     background: var(--color-alternate-background);
     border-radius: 6px;
@@ -63,8 +81,19 @@ import Features from "../components/home/Features.astro";
     font-size: 1.25rem;
     font-family: var(--font-montserrat);
     color: var(--color-text);
-    margin: 0;
+    margin: 0 auto;
   }
+
+  .schedule-row {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin: auto;
+    font-size: 1.25rem;
+    font-family: var(--font-montserrat);
+    color: var(--color-text);
+  }
+
   @media (max-width: 680px) {
     .hero img {
       width: 80%;
@@ -74,7 +103,8 @@ import Features from "../components/home/Features.astro";
     }
 
     .news-section {
-      padding: 1.5rem 0;
+      padding: 1.5rem 1rem 3.5rem;
+      gap: 1rem;
     }
 
     .news-section h2 {
@@ -83,6 +113,13 @@ import Features from "../components/home/Features.astro";
 
     .news-section p {
       font-size: 1rem;
+    }
+
+    .schedule-row {
+      font-size: 1rem;
+      width: 90%;
+      flex-direction: column;
+      margin-bottom: 1rem;
     }
   }
 </style>
