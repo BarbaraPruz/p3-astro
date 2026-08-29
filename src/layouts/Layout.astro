@@ -146,6 +146,15 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
     text-decoration: none;
   }
+  .secondary-button {
+    background: var(--color-accent-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--color-bg);
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
+    text-decoration: none;
+  }
   .large-primary-button {
     display: inline-block;
     text-decoration: none;
@@ -157,7 +166,7 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
     box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
   }
   .large-primary-button:hover,
-  .primary-button:hover {
+  .primary-button:hover, .secondary-button: hover {
     opacity: 0.9;
     cursor: pointer;
   }
@@ -168,10 +177,13 @@ const { title = "P3 Studio Hawaii" } = Astro.props;
       min-height: 60vh;
     }
 
-    .large-primary-button {
+    .primary-button,
+    .secondary-button {
       padding: 0.5rem 0.75rem;
-      font-size: 1rem;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
+    }
+    .large-primary-button {
+      padding: 0.85rem 1.2rem;
+      font-size: 1.25rem;
     }
   }
 </style>

@@ -17,26 +17,32 @@ import Features from "../components/home/Features.astro";
     <Features />
   </section>
   <section class="home-section news-section">
-    <h2>Class Schedule</h2>
+    <h2>Movement Class Schedule</h2>
     <p>
-      Our small group classes (maximum 8 participants) are 60 minutes.<br />Cost
-      is $30 per class.&nbsp;<a href="/contact" class="text-link">Contact Us</a> to
-      reserve your space!
+      These small group classes are limited to 8 participants.<br />Cost is $30
+      per class.
     </p>
     <div>
       <div class="schedule-row">
-        <div>Morning Class</div><div>Monday-Friday</div><div>
+        <div class="class-title">Morning Class</div><div>Monday-Friday</div><div
+        >
           8:00am - 9:00am
         </div>
       </div>
       <div class="schedule-row">
-        <div>Evening Class</div><div>Monday-Friday</div><div>
+        <div class="class-title">Evening Class</div><div>Monday-Friday</div><div
+        >
           7:30pm - 8:30pm
         </div>
       </div>
     </div>
-    <div><a class="primary-button" href="/contact">Contact Us</a></div>
+    <div>
+      <a class="secondary-button" href="/contact">Reserve Your Space!</a>
+    </div>
   </section>
+  <div class="contact-us-section">
+    <a class="large-primary-button" href="/contact">Contact Us</a>
+  </div>
 </Layout>
 
 <style>
@@ -94,6 +100,13 @@ import Features from "../components/home/Features.astro";
     color: var(--color-text);
   }
 
+  .contact-us-section {
+    margin: 5rem 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   @media (max-width: 680px) {
     .hero img {
       width: 80%;
@@ -102,6 +115,10 @@ import Features from "../components/home/Features.astro";
       margin-top: 2.5rem;
     }
 
+    .class-title {
+      text-decoration: underline;
+      text-decoration-color: var(--color-text);
+    }
     .news-section {
       padding: 1.5rem 1rem 3.5rem;
       gap: 1rem;
@@ -120,6 +137,10 @@ import Features from "../components/home/Features.astro";
       width: 90%;
       flex-direction: column;
       margin-bottom: 1rem;
+    }
+
+    .contact-us-section {
+      margin: 3rem 0 0;
     }
   }
 </style>
