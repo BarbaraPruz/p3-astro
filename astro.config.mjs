@@ -1,6 +1,9 @@
 import { defineConfig, fontProviders } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
+  site: "https://p3studiohawaii.com",
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -12,5 +15,10 @@ export default defineConfig({
       name: "Montserrat",
       cssVariable: "--font-montserrat",
     },
+  ],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("/success/"),
+    }),
   ],
 });

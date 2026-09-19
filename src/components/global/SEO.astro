@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  noindex: boolean;
+}
+
+const { title, description, noindex } = Astro.props;
+const canonicalURL = Astro.url;
+---
+
+<title>{title}</title>
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:type" content="website" />
