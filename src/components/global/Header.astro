@@ -1,39 +1,102 @@
 ---
 const navLinks = [
-  /*   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" }, */
+  { href: "/studio", label: "Studio" },
+  { href: "/contact", label: "Contact" },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo">P3 Studio Hawaii</a>
-    <!--     <nav class="site-nav">
+    <a href="/" class="logo">
+      P3 Studio Hawaii
+    </a>
+    <nav class="desktop-nav">
       <ul>
-        {
-          navLinks.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))
-        }
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="desktop-nav-link"
+              class:list={[{ active: currentPath === link.href }]}
+              aria-current={currentPath === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+
+        <li>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark and light theme"
+          >
+            <span class="icon-sun">☀</span>
+            <span class="icon-moon">☾</span>
+          </button>
+        </li>
       </ul>
-    </nav> -->
+    </nav>
     <button
-      id="theme-toggle"
-      class="theme-toggle"
-      type="button"
-      aria-label="Toggle dark and light theme"
+      class="menu-toggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
-      <span class="icon-sun">☀</span>
-      <span class="icon-moon">☾</span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+    <nav id="mobile-menu" class="mobile-nav" aria-label="Main navigation">
+      {navLinks.map((item) => (
+        <a class="mobile-nav-link" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+      <button
+        id="mobile-theme-toggle"
+        class="theme-toggle mobile-nav-link"
+        type="button"
+        aria-label="Toggle dark and light theme"
+      >
+        <span class="icon-sun">☀</span>
+        <span class="icon-moon">☾</span>
+      </button>
+    </nav>
   </div>
 </header>
 
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".mobile-nav");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    toggle.setAttribute(
+      "aria-label",
+      isOpen ? "Open navigation menu" : "Close navigation menu",
+    );
+    menu?.classList.toggle("is-open", !isOpen);
+  });
+
+  // Close menu when a navigation link is selected
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Open navigation menu");
+      menu?.classList.remove("is-open");
+    });
+  });
+</script>
+
 <style>
   .site-header {
+    position: relative;
     background: var(--color-header-bg);
     color: var(--color-header-text);
     padding: 1rem 1.5rem;
@@ -61,23 +124,50 @@ const navLinks = [
     align-items: center;
     gap: 1.5rem;
   }
-  .site-nav ul {
+  .desktop-nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
   }
 
-  .site-nav a {
+  .desktop-nav a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .desktop-nav-link {
     color: var(--color-header-text-muted);
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.15s ease;
   }
 
-  .site-nav a:hover {
+  .desktop-nav-link:hover {
     color: var(--color-header-text);
+    font-size: 1.02rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    margin: 5px 0;
+  }
+
+  .mobile-nav {
+    display: none;
   }
   .theme-toggle {
     background: transparent;
@@ -101,5 +191,43 @@ const navLinks = [
 
   .icon-moon {
     display: none;
+  }
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 105%;
+      right: 0.25rem;
+      min-width: 180px;
+      padding: 0.75rem 0 1.5rem;
+      background: var(--color-alternate-background);
+      color: #222;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+      border-radius: 6px;
+      z-index: 100;
+    }
+
+    .mobile-nav.is-open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav-link {
+      padding: 0.75rem 1.25rem;
+      color: var(--color-text);
+    }
+
+    .mobile-nav a:hover {
+      background: #f3f3f3;
+      opacity: 1;
+    }
   }
 </style>
